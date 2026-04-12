@@ -102,7 +102,7 @@ OUTPUT FORMAT — return ONLY this JSON array, nothing else:
 --- END KNOWLEDGE BASE ---
 
 JSON array:"""
-
+'''
 
 # ── Batch prompt (HuggingFace / cloud APIs — one call per topic) ─────────────
 # Cloud models can reliably produce a full JSON array in one shot.
