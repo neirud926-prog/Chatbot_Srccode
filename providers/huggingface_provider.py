@@ -10,7 +10,7 @@ from providers.utils import parse_json_array
 
 # Default model — large, smart, free on HuggingFace Serverless Inference API.
 # Override with HF_MODEL env var or "model" key in settings.
-DEFAULT_MODEL = "Qwen/Qwen2.5-72B-Instruct"
+DEFAULT_MODEL = "openai/gpt-oss-120b"
 
 
 class HuggingFaceProvider(AIProvider):

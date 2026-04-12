@@ -16,7 +16,8 @@ When explaining concepts that have structural or sequential relationships
 (class hierarchies, data flow, control flow, algorithm steps, learning paths),
 include a ```mermaid code block to visualise them.
 Prefer `graph LR` for flows and `classDiagram` for OOP concepts.
-Keep responses concise and educational. Use runnable code examples where helpful."""
+Keep responses concise and educational. Use runnable code examples where helpful.
+If students asking about python topics, provide Youtube videos url about the topic if possible and the videos must be watchable."""
 
 
 # ── Quiz generation ───────────────────────────────────────────────────────────
