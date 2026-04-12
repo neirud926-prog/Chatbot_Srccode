@@ -1,0 +1,97 @@
+{
+    "intents": 
+    [
+		{
+            "tag": "hi",
+            "patterns": [
+                "hi there",
+				"hey there",
+				"good morning",
+				"what's up?",
+				"how's it going?",
+				"is anyone there?",
+                "hello, good afternoon",
+                "nice to meet you",
+                "nice to see you",
+                "hello, how are you doing?",
+                "hi, how are you?"
+            ],
+            "responses": [
+				"Hello! How can I help you with Python today?",
+				"Hey there! I'm ready to answer your Python questions. What's on your mind?",
+				"Greetings. I am a Python assistant. Please ask a question to begin."
+			]
+        },
+        {
+            "tag": "name",
+            "patterns": [
+                "My name is, how about you?",
+				"what is your name?",
+				"do you have my name?",
+				"try to intro yourself",
+                "what should I call you?",
+                "what's your name?",
+                "who are you?",
+                "can you tell me your name?",
+                "Here is my name, and I want to know your name",
+                "I want to know your name",
+                "Could you tell me your name?",
+                "what is your work?",
+                "My I know your name?"
+            ],
+            "responses": [
+				"I am a Python help bot. You can call me your Python assistant.",
+				"I don't have a name, but I'm here to help you with all things Python!",
+				"You're speaking with the Python help bot, specialized in providing information about Python."
+			]
+        },
+        {
+            "tag": "hour",
+            "patterns": [
+                "What hours is it right now?",
+                "What time is it right now?",
+				"Do you have the time, please?",
+                "Do you have the hours, please?",
+				"What’s the time?",
+                "What’s the hours?",
+				"Excuse me, do you happen to know the time?",
+                "Excuse me, do you happen to know the hours?",
+				"What's the time on your watch?",
+                "What's the hours on your watch?",
+				"Do you know the time of day?",
+                "Do you know the hours of day?",
+				"I was wondering if you could tell me the time.",
+                "What time have we got at the moment?",
+                "Could you let me know the current time, please?",
+                "Sorry to bother you, but do you have the time?"
+            ],
+            "responses": [
+				"The current time is $time.",
+				"The time right now is: $time.",
+				"The local time is: $time."
+			]
+        },
+		{
+            "tag": "goodbye",
+            "patterns": [
+                "see you, goodbye",
+				"byebye, thanks for your help",
+				"see you later",
+				"thanks, that's all for now",
+				"I'm done, thank you",
+				"I want to exit",
+				"I need to quit",
+				"talk to you later",
+				"okay, thanks bye",
+                "I have to go now",
+                "I need to leave",
+                "I need to end the conversation"
+            ],
+            "responses": [
+				"Goodbye! Have a great day.",
+				"Happy to help! Feel free to reach out again if you have more questions. Bye for now!",
+				"Farewell. If you need further assistance in the future, just say hello."
+			]
+        }
+    ]
+}

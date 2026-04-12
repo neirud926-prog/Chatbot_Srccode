@@ -1,0 +1,9 @@
+{"__TABLE_DEFINITION":{"name":"AccountTable","factor":1,"frozen":false,"schema":{"type":"object","x-zui":{},"properties":{"user_id":{"type":"number","x-zui":{"index":2,"searchable":true},"nullable":true},"password":{"type":"string","x-zui":{"index":1,"searchable":true},"nullable":true},"username":{"type":"string","x-zui":{"index":0,"searchable":true},"nullable":true}},"additionalProperties":true},"tags":{},"keyColumn":null,"isComputeEnabled":false,"createdAt":"2026-03-21T15:28:20.764Z","updatedAt":"2026-03-22T14:05:58.600Z","rowsCount":8}}
+{"computed":{},"stale":[],"id":1,"createdAt":"2026-03-21T15:29:59","updatedAt":"2026-03-26T12:06:02","username":"Emp001","password":"Emp001","user_id":1}
+{"computed":{},"stale":[],"id":2,"createdAt":"2026-03-21T15:30:16","updatedAt":"2026-03-22T14:06:03","username":"Emp002","password":"Emp002","user_id":2}
+{"computed":{},"stale":[],"id":3,"createdAt":"2026-03-21T15:30:24","updatedAt":"2026-03-22T14:06:04","username":"Emp003","password":"Emp003","user_id":3}
+{"computed":{},"stale":[],"id":4,"createdAt":"2026-03-21T15:34:45","updatedAt":"2026-03-22T14:59:40","username":"SpvrB01","password":"SpvrB01","user_id":4}
+{"computed":{},"stale":[],"id":5,"createdAt":"2026-03-21T15:34:53","updatedAt":"2026-03-22T14:06:07","username":"SpvrB02","password":"SpvrB02","user_id":5}
+{"computed":{},"stale":[],"id":6,"createdAt":"2026-03-21T15:34:54","updatedAt":"2026-03-22T14:06:08","username":"SpvrB03","password":"SpvrB03","user_id":6}
+{"computed":{},"stale":[],"id":7,"createdAt":"2026-03-21T15:34:55","updatedAt":"2026-03-22T14:06:09","username":"SpvrB04","password":"SpvrB04","user_id":7}
+{"computed":{},"stale":[],"id":8,"createdAt":"2026-03-21T15:34:57","updatedAt":"2026-03-22T14:06:10","username":"SpvrB05","password":"SpvrB05","user_id":8}
