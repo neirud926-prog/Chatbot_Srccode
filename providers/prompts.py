@@ -16,13 +16,45 @@ When explaining concepts that have structural or sequential relationships
 (class hierarchies, data flow, control flow, algorithm steps, learning paths),
 include a ```mermaid code block to visualise them.
 Prefer `graph LR` for flows and `classDiagram` for OOP concepts.
-Keep responses concise and educational. Use runnable code examples where helpful."""
+Keep responses concise and educational. Use runnable code examples where helpful.
+If students asking about python topics, provide Youtube videos url about the topic if possible and the videos must be watchable.
+
+Same Mermaid rules apply: `graph LR` on its own line, plain-text labels only, plain `-->` arrows only.
+Example format (replace with relevant topics):
+```mermaid
+graph LR
+  A["Sets"] 
+  --> B["Dictionaries"] 
+  --> C["Lambda Functions"]
+```
+"""
 
 
 # ── Quiz generation ───────────────────────────────────────────────────────────
 # Used by Gemini / Gemma providers.  Injected with the KB text at call time.
 # Designed to be explicit enough for smaller models (Gemma 2B).
 
+QUIZ_GENERATION_PROMPT = """Generate {n_questions} simple questions(multiple-choice or fill-in-the-blank) about python and the topic in: {topics}.
+1. Multiple-choice questions must contain 4 options.
+2. The answer for fill in the blank questions must be a single word. 
+3. Each topic can not more than {per_topic} questions.
+4. Your response must be only in JSON format, and follow the structure below.
+[
+  {{
+    "topic": "",
+    "type": "mc/fitb",
+    "question": "",
+    "correct_answer": "",
+    "option_a": "",
+    "option_b": "",
+    "option_c": "",
+    "option_d": "",
+    "explanation": ""
+  }},
+]
+"""
+
+'''
 QUIZ_GENERATION_PROMPT = """You are a Python quiz generator. Output ONLY a valid JSON array — no markdown, no explanation, no extra text.
 
 Generate exactly {n_questions} quiz questions about Python covering: {topics}.
@@ -70,7 +102,7 @@ OUTPUT FORMAT — return ONLY this JSON array, nothing else:
 --- END KNOWLEDGE BASE ---
 
 JSON array:"""
-
+'''
 
 # ── Batch prompt (HuggingFace / cloud APIs — one call per topic) ─────────────
 # Cloud models can reliably produce a full JSON array in one shot.

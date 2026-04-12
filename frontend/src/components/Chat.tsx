@@ -73,7 +73,7 @@ function makeMsg(
 
 function buildLoginGreeting(): StoredMessage[] {
   return [
-    makeMsg('assistant', 'Welcome to PolyU SPEED SEHS4678 Python tutor! 👋'),
+    makeMsg('assistant', 'Welcome to PolyU SPEED SEHS4678 Python tutor! Developed by NKH, CLS, WFW & WST. 👋'),
     makeMsg('assistant', 'Please enter your Username:'),
   ];
 }
@@ -120,6 +120,12 @@ interface HFModelOption {
   desc: string;     // one-line description shown in picker
 }
 const HF_MODELS: HFModelOption[] = [
+  {
+    id: 'openai/gpt-oss-120b',
+    label: 'openai gpt-oss-120b',
+    short: 'openai gpt-oss-120b',
+    desc: 'high-performance, private reasoning and agentic power',
+  },
   {
     id: 'Qwen/Qwen2.5-72B-Instruct',
     label: 'Qwen 2.5 72B Instruct',
@@ -343,13 +349,28 @@ export default function Chat() {
     index: number,
     currentSession: ChatSession,
   ) => {
+    const quiz_encourage = [
+        "Keep up the good work!!!",
+        "You're doing great, keep it up!!!",
+        "Don't give up, you're almost there!!!",
+        "Believe in yourself, you can do it!!!",
+        "Every step you take is progress, keep going!!!",
+    ];
+
+    const random_message = makeMsg('assistant', quiz_encourage[Math.floor(Math.random() * quiz_encourage.length)]);
+
     const q = questions[index];
     const msg = makeMsg('assistant', questionPrompt(q, index + 1, questions.length), 'quiz-question', {
       question: q,
     } satisfies QuizQuestionPayload);
+
+    let message_qeueue = [...currentSession.messages, msg];
+    if (index !== 0)
+      message_qeueue = [...currentSession.messages, random_message, msg];
+
     const next: ChatSession = {
       ...currentSession,
-      messages: [...currentSession.messages, msg],
+      messages: message_qeueue,
     };
     saveSession(userId, next);
     setSessions(loadSessions(userId));
@@ -983,7 +1004,7 @@ export default function Chat() {
               >
                 ☰
               </button>
-              <div className="text-sm text-[var(--text)] font-medium truncate">PY Chatbot</div>
+              <div className="text-sm text-[var(--text)] font-medium truncate">PolyU SPEED SEHS4678</div>
             </div>
 
             <div className="px-3">
@@ -1476,7 +1497,7 @@ function MessageView({ msg, onButton, disableButtons, isLastUserMessage }: Messa
                   ];
                   return (
                     <div key={letter}>
-                      {letter}) {opt}
+                      {letter} {opt}
                     </div>
                   );
                 })}
@@ -1528,7 +1549,7 @@ function MessageView({ msg, onButton, disableButtons, isLastUserMessage }: Messa
                       disabled={disableButtons || !!answered}
                       className={`${base} ${stateClasses}`}
                     >
-                      Option{letter}
+                      Option {letter}
                     </button>
                   );
                 })}
