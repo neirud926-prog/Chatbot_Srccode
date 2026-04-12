@@ -82,7 +82,7 @@ function renderInline(text: string): string {
     .replace(/>/g, '&gt;');
   html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
   html = html.replace(/\*(.+?)\*/g, '<em>$1</em>');
-  html = html.replace(/`([^`]+?)`/g, '<code class="bg-slate-100 px-1 rounded text-sm">$1</code>');
+  html = html.replace(/`([^`]+?)`/g, '<code class="bg-slate-100 px-1 rounded text-black">$1</code>');
   // Basic heading support: lines starting with # / ## / ###
   return html;
 }
@@ -167,11 +167,15 @@ function MermaidBlock({ content }: { content: string }) {
     const run = async () => {
       if (!ref.current) return;
       try {
+        if (!content.includes('["')) content = content.replace(/\[/g, "[\"");
+        if (!content.includes('"]')) content = content.replace(/\]/g, "\"]");
+
         const { svg } = await mermaid.render(id, content);
         if (!cancelled && ref.current) ref.current.innerHTML = svg;
       } catch (e: any) {
         if (!cancelled && ref.current) {
-          ref.current.innerHTML = `<pre class="text-red-600 text-sm whitespace-pre-wrap">Mermaid error: ${String(e?.message || e)}\n\n${content}</pre>`;
+          console.log(content);
+          //ref.current.innerHTML = `<pre class="text-red-600 text-sm whitespace-pre-wrap">Mermaid error: ${String(e?.message || e)}\n\n${content}</pre>`;
         }
       }
     };

@@ -124,7 +124,7 @@ const HF_MODELS: HFModelOption[] = [
     id: 'openai/gpt-oss-120b',
     label: 'openai gpt-oss-120b',
     short: 'openai gpt-oss-120b',
-    desc: 'Most capable — best accuracy, recommended for quizzes',
+    desc: 'high-performance, private reasoning and agentic power',
   },
   {
     id: 'Qwen/Qwen2.5-72B-Instruct',
@@ -1497,7 +1497,7 @@ function MessageView({ msg, onButton, disableButtons, isLastUserMessage }: Messa
                   ];
                   return (
                     <div key={letter}>
-                      {letter}) {opt}
+                      {letter} {opt}
                     </div>
                   );
                 })}
@@ -1549,7 +1549,7 @@ function MessageView({ msg, onButton, disableButtons, isLastUserMessage }: Messa
                       disabled={disableButtons || !!answered}
                       className={`${base} ${stateClasses}`}
                     >
-                      Option{letter}
+                      Option {letter}
                     </button>
                   );
                 })}
