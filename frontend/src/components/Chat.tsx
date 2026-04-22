@@ -78,9 +78,16 @@ function buildLoginGreeting(): StoredMessage[] {
   ];
 }
 
-function buildMenuGreeting(username: string): StoredMessage[] {
+function buildMenuGreeting(username: string, login_count: number = 0): StoredMessage[] {
+  
+  let pre_fix = "Hi";
+  if (login_count > 0) {
+    pre_fix = "Welcome back";
+  }
+
   return [
-    makeMsg('assistant', `Hi ${username}! How can I help support your learning today?`),
+    
+    makeMsg('assistant', `${pre_fix} ${username}! How can I help support your learning today?`),
     makeMsg('assistant', '', 'buttons', ACTION_BUTTONS),
   ];
 }
@@ -261,7 +268,7 @@ export default function Chat() {
             const fresh = createSession(me.user_id, {
               mode: { kind: 'idle' },
             });
-            fresh.messages.push(...buildMenuGreeting(me.username ?? 'there'));
+            fresh.messages.push(...buildMenuGreeting(me.username ?? 'there', 1));
             saveSession(me.user_id, fresh);
             list = loadSessions(me.user_id);
           } else {
@@ -730,7 +737,7 @@ export default function Chat() {
           setUsername(mode.username);
           // IMPORTANT: pass the fresh user_id explicitly — React's setUserId
           // is async so `userId` state is still null in this closure.
-          appendMessages(buildMenuGreeting(mode.username), result.user_id);
+          appendMessages(buildMenuGreeting(mode.username, result.login_count), result.user_id);
           setMode({ kind: 'idle' }, result.user_id);
           // Refresh provider from backend
           api.getSettings().then((s) => setProvider(s.provider)).catch(() => {});
@@ -947,7 +954,7 @@ export default function Chat() {
       mode: isLoggedIn ? { kind: 'idle' } : { kind: 'await_username' },
     });
     if (isLoggedIn) {
-      fresh.messages.push(...buildMenuGreeting(username ?? 'there'));
+      fresh.messages.push(...buildMenuGreeting(username ?? 'there', 1));
     } else {
       fresh.messages.push(...buildLoginGreeting());
     }
